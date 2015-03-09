@@ -1,0 +1,22 @@
+@import 'normalize';
+@import 'foundation_settings';
+@import 'foundation_custom';
+@import 'mixins';
+
+$short: "t", "b", "l", "r";
+$long: "top", "bottom", "left", "right";
+
+@for $i from 1 through length($short) {
+  $s: nth($short, $i);
+  $l: nth($long, $i);
+	$j: 0;
+	@while $j <= 100 {
+	  .m#{$s}#{$j} { margin-#{$l}: #{$j}px }
+		.p#{$s}#{$j} { padding-#{$l}: #{$j}px }
+	  $j: $j + 5;
+	}
+  $i: $i + 1;
+}
+
+
+
