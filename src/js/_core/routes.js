@@ -4,6 +4,18 @@ app.config(function($routeProvider, $locationProvider) {
     templateUrl: '/tpl/public/home.html',
     controller: 'homeCtrl',
     title:'Home'
+  }).when('/login', {
+    templateUrl: '/tpl/public/login.html',
+    controller: 'loginCtrl',
+    title:'Login'
+  }).when('/start', {
+    templateUrl: '/tpl/public/start.html',
+    controller: 'startCtrl',
+    title:'start'
+  }).when('/dashing/dashboard', {
+    templateUrl: '/tpl/dashing/dashboard.html',
+    controller: 'dashboardCtrl',
+    title:'Dashing Dashboard'
   });
 
   $routeProvider.otherwise({redirectTo: '/'});

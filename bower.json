@@ -15,7 +15,8 @@
     "angular-loading-bar": "~0.6.0",
     "font-awesome": "~4.2.0",
     "angular-foundation": "~0.5.1",
-    "foundation": "~5.5.0"
+    "foundation": "~5.5.0",
+    "angular-local-storage": "~0.1.5"
   },
   "ignore": [
     "**/.*",

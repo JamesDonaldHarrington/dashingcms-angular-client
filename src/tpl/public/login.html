@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="column large-6 large-centered">
+    <h1>Login to Dashing</h1>
+    <form novalidate name="loginForm", ng-submit="login()">
+      <div class="row">
+        <div class="large-12 columns">
+          <label ng-class="{ error : loginForm.email.$invalid && loginForm.$submitted }">Email
+            <input
+              type="email"
+              name="email"
+              placeholder="jane.doe@example.com"
+              ng-model="creds.email"
+              required
+              ng-class="{ error : loginForm.email.$invalid && loginForm.$submitted }"
+            >
+          </label>
+            <small class="error" ng-show="loginForm.email.$invalid && loginForm.$submitted">Please use a valid email address</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label ng-class="{ error : loginForm.password.$invalid && loginForm.$submitted }">Password
+            <input 
+              type="password"
+              name="password"
+              placeholder="********"
+              ng-model="creds.password"
+              required
+              ng-class="{ error : loginForm.password.$invalid && loginForm.$submitted }"
+            >
+          </label>
+          <small class="error" ng-show="loginForm.password.$invalid && loginForm.$submitted">Please use a valid password</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <button class="button expand">Save and continue</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
