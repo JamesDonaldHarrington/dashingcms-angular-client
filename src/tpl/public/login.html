@@ -1,7 +1,10 @@
 <div class="row">
   <div class="column large-6 large-centered">
     <h1>Login to Dashing</h1>
-    <form novalidate name="loginForm", ng-submit="login()">
+
+    <iframe src="sink.html" target="sink" name="sink" style="display:none"></iframe>
+
+    <form action="stink.html" method="POST" novalidate name="loginForm", ng-submit="login()" form-autofill-fix>
       <div class="row">
         <div class="large-12 columns">
           <label ng-class="{ error : loginForm.email.$invalid && loginForm.$submitted }">Email
@@ -34,7 +37,7 @@
       </div>
       <div class="row">
         <div class="large-12 columns">
-          <button class="button expand">Save and continue</button>
+          <button class="button expand">Login</button>
         </div>
       </div>
     </form>

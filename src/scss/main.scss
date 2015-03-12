@@ -9,17 +9,22 @@ $long: "top", "bottom", "left", "right";
 @for $i from 1 through length($short) {
   $s: nth($short, $i);
   $l: nth($long, $i);
-	$j: 0;
-	@while $j <= 100 {
-	  .m#{$s}#{$j} { margin-#{$l}: #{$j}px }
-		.p#{$s}#{$j} { padding-#{$l}: #{$j}px }
-	  $j: $j + 5;
-	}
+  $j: 0;
+  @while $j <= 100 {
+    .m#{$s}#{$j} { margin-#{$l}: #{$j}px }
+    .p#{$s}#{$j} { padding-#{$l}: #{$j}px }
+    $j: $j + 5;
+  }
   $i: $i + 1;
 }
 
 
 
-.public.nav{
-  background: #ECECEC;
+.nav{
+  &.public{
+    background: #ECECEC;
+  }
+  &.loggedin{
+    background:$topbar-bg-color;
+  }
 }

@@ -23,13 +23,12 @@ app.factory('ubAlert', function(ubUuid, $rootScope, $sce, $timeout){
       var successes = ['win', 'success', 'good'];
       var infos = ['info', 'data', 'tip', 'message'];
 
-      if      (dangers.indexOf(obj.type) > -1) {obj.type = 'danger';}
+      if      (dangers.indexOf(obj.type) > -1) {obj.type = 'alert';}
       else if (warnings.indexOf(obj.type) > -1) {obj.type ='warning';}
       else if (successes.indexOf(obj.type) > -1) {obj.type ='success';}
       else if (infos.indexOf(obj.type) > -1) {obj.type ='info';}
       else{ console.log(obj.type + ' is not a valid alert type'); obj.type ='info';}
       $rootScope.alerts.push(obj);
-      console.log(obj.permanent !== true);
       if (!obj.persist && obj.permanent !== true) {
         $timeout(function(){
           var ind = $rootScope.alerts.map(function(e) { return e.id; }).indexOf(obj.id);

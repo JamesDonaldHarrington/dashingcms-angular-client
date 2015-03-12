@@ -1,5 +1,9 @@
-app.service('User', function(localStorageService){
+app.service('User', function(localStorageService, $rootScope){
   var User = {};
+  var thisUser={};
+  
+  
+
   User.create = function(obj){
     obj = obj || {};
     this._id = obj._id;
@@ -13,21 +17,34 @@ app.service('User', function(localStorageService){
     this.auth = false;
     this.store =function(){
       this.auth = true;
+      thisUser = this;
       return localStorageService.set('user', this);
     };
-
     return this;
   };
-  // User.authenticate = function(cb){
-  //   var user = localStorageService.get('user');
-  //   $http.get('/api/loggedin')
-  //   .success(function(d){
-  //     return cb(d.success);
-  //   });
-  // };
-  User.getUser = function(){
-    return localStorageService.get('user') || {};
-  }; 
+
+  User.load = function(){
+    return (thisUser = localStorageService.get('user') || null);
+  }; User.load();
+
+
+  User.get = function(){
+    return thisUser;
+  };
+
+
+  User.destroy = function(){
+    thisUser = null;
+    $rootScope.loggedin = false;
+    return localStorageService.remove('user');
+  };
+  
 
   return User;
+});
+
+app.factory('thisUser', function(User){
+  return function (){
+    return User.get();
+  };
 });

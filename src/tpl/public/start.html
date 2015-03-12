@@ -36,7 +36,35 @@
       </div>
       <div class="row">
         <div class="large-12 columns">
-          <button class="button expand">Save and continue</button>
+          <label ng-class="{ error : startForm.email.$invalid && startForm.$submitted }">Email
+            <input 
+              type="email" name="email" placeholder="jane.doe@example.com"
+              ng-model="creds.email" required
+              ng-class="{ error : startForm.email.$invalid && startForm.$submitted }"
+            >
+          </label>
+            <small class="error" ng-show="startForm.email.$invalid && startForm.$submitted">Please use a valid email address</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label ng-class="{ error : startForm.password.$invalid && startForm.$submitted }">Password
+            <input 
+              type="password" name="password" placeholder="********"
+              ng-model="creds.password" required 
+              ng-class="{ error : startForm.password.$invalid && startForm.$submitted }"
+            >
+          </label>
+          <small class="error" ng-show="startForm.password.$error.required && startForm.$submitted">Please use a valid password</small>
+          <small class="error" ng-show="startForm.password.$error.minlength && startForm.$submitted">Password is too short (minimum length is 8 characters)</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <button class="button expand" ng-disabled="loading">
+            <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+            <span>Save and continue</span>
+          </button>
         </div>
       </div>
     </form>

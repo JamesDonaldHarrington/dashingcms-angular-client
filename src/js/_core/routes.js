@@ -1,21 +1,34 @@
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider
-   .when('/', {
+
+/////////////////////////////////////////////////////////////STARTUP AND LOGIN / SIGNUP ////////////////////////////////
+  .when('/', {
     templateUrl: '/tpl/public/home.html',
     controller: 'homeCtrl',
     title:'Home'
-  }).when('/login', {
+  })
+  .when('/login', {
     templateUrl: '/tpl/public/login.html',
     controller: 'loginCtrl',
     title:'Login'
-  }).when('/start', {
+  })
+  .when('/start', {
     templateUrl: '/tpl/public/start.html',
     controller: 'startCtrl',
     title:'start'
-  }).when('/dashing/dashboard', {
+  })
+
+
+/////////////////////////////////////////////////////////////DASHBOARD//////////////////////////////////////////////////
+  .when('/dashing/dashboard', {
     templateUrl: '/tpl/dashing/dashboard.html',
     controller: 'dashboardCtrl',
     title:'Dashing Dashboard'
+  })
+  .when('/dashing/blog', {
+    templateUrl: '/tpl/dashing/blog.html',
+    controller: 'blogCtrl',
+    title:'Dashing blog'
   });
 
   $routeProvider.otherwise({redirectTo: '/'});

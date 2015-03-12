@@ -1,0 +1,36 @@
+<div class="row" ng-controller="menuCtrl">
+  <div class="large-12 column">
+
+    <top-bar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/dashing/dashboard">Dashing</a></h1>
+        </li>
+        <li toggle-top-bar class="menu-icon"><a href="#"></a></li>
+      </ul>
+
+      <top-bar-section>
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li has-dropdown>
+            <a href="">Modules</a>
+            <ul top-bar-dropdown>
+              <li><a href="">Files</a></li>
+              <li><a href="/dashing/blog">Blog</a></li>
+              <li><a href="">Galleries</a></li>
+              <li><a href="">Users</a></li>
+            </ul>
+          </li>
+          <li><a title="Logout" ng-click="logout()"><span class="fa fa-power-off"></span></a></li>
+        </ul>
+
+        <!-- Left Nav Section -->
+        <!-- <ul class="left">
+          <li><a href="#">Left</a></li>
+        </ul> -->
+      </top-bar-section>
+    </top-bar>
+
+  </div>
+</div>
+

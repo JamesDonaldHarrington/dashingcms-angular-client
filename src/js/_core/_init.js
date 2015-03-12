@@ -1,12 +1,25 @@
 var app = angular.module('dashing', ['ngRoute', 'LocalStorageModule', 'mm.foundation'] );
 
-app.run(function($rootScope){
-  $rootScope.public = true;
+
+app.run(function($rootScope, thisUser){
+  $rootScope.$on("$routeChangeStart", function(){
+    var user = thisUser();
+    $rootScope.loggedin = user?true:false;
+  });
 });
 
 
-app.run(function($http, User){
-  var user = User.getUser();
-  $http.defaults.headers.common.token = user.token;
-  $http.defaults.headers.common.id = user._id;
+app.run(function(thisUser, $http){
+  var user = thisUser();
+  if (user) {
+    $http.defaults.headers.common.token = user.token;
+    $http.defaults.headers.common.id = user._id;
+  }
+});
+
+app.run(function($rootScope){
+  window.rs = $rootScope;
+  $rootScope.closeAlert = function(index) {
+    $rootScope.alerts.splice(index, 1);
+  };
 });

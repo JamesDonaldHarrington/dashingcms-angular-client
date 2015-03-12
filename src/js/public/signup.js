@@ -1,8 +1,8 @@
-app.controller('loginCtrl', function($scope, $http, $rootScope, $location, $modal, ubAlert, User) {
+app.controller('signup', function($scope, $http, $location, ubAlert, User) {
   
-  $scope.login = function(){
-    if ($scope.loginForm.$valid) {
-      $http.post('/api/login', $scope.creds)
+  $scope.signup = function(){
+    if ($scope.signupForm.$valid) {
+      $http.post('/api/signup', $scope.creds)
       .success(function(d){
         if (d.success) {
           var user = new User.create(d.results);

@@ -4,9 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title ng-bind="title">Kk9Guardians</title>
+  <title ng-bind="title">Dashing CMS</title>
   <base href="/test">
-  <link rel="icon" href="/img/k9guardians_logo_32.png" />
   <meta name="description" content="Send Secreate message with My Wingman App">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -14,9 +13,14 @@
 </head>
 <body>
   
-  <div ng-show="public" class="public nav" ng-include="'/tpl/public/partials/nav.html'" ></div>
+  <!-- <div ng-hide="loggedin" class="public nav" ng-include="'/tpl/public/partials/nav.html'" ></div> -->
+  <div ng-show="loggedin" class="loggedin nav" ng-include="'/tpl/dashing/partials/nav.html'" ></div>
   
-  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" >{{alert.message}}</alert>
+  <div class="row">
+    <div class="column large-12">
+      <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" >{{alert.message}}</alert>
+    </div>  
+  </div>
   
   <div ng-view></div>
 
