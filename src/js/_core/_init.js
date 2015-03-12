@@ -1,5 +1,9 @@
-var app = angular.module('dashing', ['ngRoute', 'LocalStorageModule', 'mm.foundation'] );
+var app = angular.module('dashing', ['ngRoute', 'LocalStorageModule', 'mm.foundation', 'hc.marked'] );
 
+
+app.config(['markedProvider', function(markedProvider) {
+  markedProvider.setOptions({gfm: true});
+}]);
 
 app.run(function($rootScope, thisUser){
   $rootScope.$on("$routeChangeStart", function(){

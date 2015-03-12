@@ -28,3 +28,17 @@ $long: "top", "bottom", "left", "right";
     background:$topbar-bg-color;
   }
 }
+.pre-field{
+  display: block;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 0.75rem;
+  font-weight: normal;
+  background: $primary-color;
+  color: #FFF;
+  .button{
+    margin:0;
+    padding: rem-calc(8px);
+    font-size: rem-calc(10px);
+  }
+}

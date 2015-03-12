@@ -2,8 +2,85 @@
   <div class="large-12 column">
     <h1>Blog</h1>
     <div class="row">
-      <div class="large-6 column right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum fuga dignissimos sed, quia doloribus aspernatur. Expedita laborum amet magni eligendi neque deleniti animi asperiores, magnam totam ipsa aperiam officiis repellendus.</div>
-      <div class="large-6 column left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum fuga dignissimos sed, quia doloribus aspernatur. Expedita laborum amet magni eligendi neque deleniti animi asperiores, magnam totam ipsa aperiam officiis repellendus.</div>
+      
+
+      <div class="large-6 column right">
+        <form name="postForm" ng-submit="createPost()">
+          <fieldset class="mt0">
+
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Title
+                  <input type="text" placeholder="Dashingly handsom blog post" ng- ng-model="post.title" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-6 columns">
+                <label>Slug (url)
+                  <input type="text" name="slug" placeholder="dashingly-handsom-blog-post" ng-class="{error:postForm.slug.$invalid}" ng-model="post.slug" ng-pattern="/^[a-z0-9-]+$/" ng-trim="false"/>
+                </label>
+                <small class="error" ng-show="postForm.slug.$invalid">This is not a valid slug (url)</small>
+              </div>
+              <div class="large-6 columns">
+                <label>Category
+                  <input type="text" placeholder="Art, Cars, Food, Fitness" name="category" ng-class="{error:postForm.category.$invalid}" ng-model="post.category" ng-list />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-6 columns">
+                <label>Status</label>
+                <input type="radio" name="status" value="publish" id="publish"       ng-model="post.status" ng-click="action = 'Publish'"><label for="publish">Publish</label>
+                <input type="radio" name="status" value="pending" id="pending" ng-model="post.status" ng-click="action = 'Save'"><label for="pending">Pending</label>
+              </div>
+              <div class="large-6 column">
+                <span class="label mr5 secondary" ng-repeat="cat in post.category track by index">{{cat}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <label for="body" style="display:inline;" >
+                  <span>Body</span>
+                </label>
+                  <small>
+                    <a href="https://help.github.com/articles/markdown-basics/" target="_blank" class="has-tip" tooltip="Markdown uses a very simple formatting syntax.">
+                      (Parsed with markdown click to learn more)
+                    </a>
+                  </small>
+
+                  <div class="pre-field">
+                    <button class="button" title="Bold" ng-mousedown="func('bold')" return false><i class="fa-fw fa fa-bold"></i></button>
+                    <button class="button" title="Italic" ng-mousedown="func('italic')"><i class="fa-fw fa fa-italic"></i></button>
+                    <button class="button" title="Bullets" ng-mousedown="func('bullet')"><i class="fa-fw fa fa-ellipsis-v"></i></button>
+                    <button class="button right" title="Preview" ng-click="openPreview()" ><i class="fa-fw fa fa-bars"></i></button>
+                  </div>
+                  <textarea id="body" placeholder="Body" ng-model="post.body" rows="15"></textarea>
+                
+                
+              </div>
+            </div>
+            <div class="row">
+              <div class="column large-6 right">
+                <button class="button expand">{{action || 'Save'}} your post</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+
+      <div class="large-6 column left">
+        <pre class="panel">{{post | json}}</pre>
+      </div>
+
     </div>
   </div>
 </div>
+
+
+
+
+<script type="text/ng-template" id="modalPreview.html">
+  <pre class="pannel" marked="md"></pre>
+</script>
