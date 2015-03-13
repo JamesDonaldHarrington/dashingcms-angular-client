@@ -11,7 +11,7 @@
             <div class="row">
               <div class="large-12 columns">
                 <label>Title
-                  <input type="text" name="title" placeholder="Dashingly handsom blog post"  ng-model="post.title" ng-class="{error:postForm.title.$invalid && postForm.$submitted}" required/>
+                  <input type="text" name="title" placeholder="Dashingly handsom blog post"  ng-model="selectedPost.title" ng-class="{error:postForm.title.$invalid && postForm.$submitted}" required/>
                 </label>
                 <small class="error" ng-show="postForm.title.$invalid && postForm.$submitted">Please provide a title</small>
               </div>
@@ -19,24 +19,24 @@
             <div class="row">
               <div class="large-6 columns">
                 <label>Slug (url)
-                  <input type="text" name="slug" placeholder="dashingly-handsom-blog-post" ng-class="{error:postForm.slug.$invalid && postForm.$submitted}" ng-model="post.slug" ng-pattern="/^[a-z0-9-]+$/" ng-trim="false"/>
+                  <input type="text" name="slug" placeholder="dashingly-handsom-blog-post" ng-class="{error:postForm.slug.$invalid && postForm.$submitted}" ng-model="selectedPost.slug" ng-pattern="/^[a-z0-9-]+$/" ng-trim="false"/>
                 </label>
                 <small class="error" ng-show="postForm.slug.$invalid && postForm.$submitted">This is not a valid slug (url)</small>
               </div>
               <div class="large-6 columns">
                 <label>Category
-                  <input type="text" placeholder="Art, Cars, Food, Fitness" name="category" ng-class="{error:postForm.category.$invalid && postForm.$submitted}" ng-model="post.category" ng-list />
+                  <input type="text" placeholder="Art, Cars, Food, Fitness" name="category" ng-class="{error:postForm.category.$invalid && postForm.$submitted}" ng-model="selectedPost.category" ng-list />
                 </label>
               </div>
             </div>
             <div class="row">
               <div class="large-6 columns">
                 <label>Status</label>
-                <input  type="radio" name="status" value="publish" id="publish" ng-model="post.status" ng-click="action = 'Publish'" > <label for="publish">Publish</label>
-                <input  type="radio" name="status" value="pending" id="pending" ng-model="post.status" ng-click="action = 'Save'">     <label for="pending">Pending</label>
+                <input  type="radio" name="status" value="visible" id="visible" ng-model="selectedPost.status" ng-click="action = 'Publish'" ><label for="visible">Visible</label>
+                <input  type="radio" name="status" value="hidden" id="hidden" ng-model="selectedPost.status" ng-click="action = 'Save'">      <label for="hidden">Hidden</label>
               </div>
               <div class="large-6 column">
-                <span class="label mr5 secondary" ng-repeat="cat in post.category track by $index">{{cat}}</span>
+                <span class="label mr5 secondary" ng-repeat="cat in selectedPost.category track by $index">{{cat}}</span>
               </div>
             </div>
             <div class="row">
@@ -50,13 +50,18 @@
                     </a>
                   </small>
 
-                  <!-- <div class="pre-field">
-                    <button class="button" title="Bold" ng-mousedown="func('bold')" return false><i class="fa-fw fa fa-bold"></i></button>
-                    <button class="button" title="Italic" ng-mousedown="func('italic')"><i class="fa-fw fa fa-italic"></i></button>
-                    <button class="button" title="Bullets" ng-mousedown="func('bullet')"><i class="fa-fw fa fa-ellipsis-v"></i></button>
-                    <button class="button right" title="Preview" ng-click="openPreview()" ><i class="fa-fw fa fa-bars"></i></button>
-                  </div> -->
-                  <textarea id="body" name="body" placeholder="Body" ng-model="post.body" rows="15" ng-class="{error:postForm.body.$invalid && postForm.$submitted}" required></textarea>
+                  <div class="pre-field">
+                    <div class="row">
+                      <div class="small-12 column">
+                        <!-- <button class="button" title="Bold" ng-mousedown="func('bold')" return false><i class="fa-fw fa fa-bold"></i></button>
+                        <button class="button" title="Italic" ng-mousedown="func('italic')"><i class="fa-fw fa fa-italic"></i></button>
+                        <button class="button" title="Bullets" ng-mousedown="func('bullet')"><i class="fa-fw fa fa-ellipsis-v"></i></button> -->
+                        <a class="button right" title="Preview" ng-click="openPreview()"><i class="fa-fw fa fa-bars"></i></a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <textarea id="body" name="body" placeholder="Body" ng-model="selectedPost.body" rows="15" ng-class="{error:postForm.body.$invalid && postForm.$submitted}" required></textarea>
                 </label>
                 <small class="error" ng-show="postForm.body.$invalid && postForm.$submitted">Please provide a body</small>
               </div>
@@ -72,10 +77,18 @@
 
 
       <div class="large-6 column left">
-        <div ng-repeat="p in posts">
-          <div>{{p.title}}</div>
-          <small>{{p.body}}</small>
-        </div>
+        <ul class="side-nav">
+          <li ng-repeat="p in posts" ng-show="p.title">
+            
+            <h3>
+              <small class="subheader ml15" ng-show="$index === 0"> This post is pending</small>
+              <a title="{{p.title}}" ng-click="selectPost(p._id)">
+                <span>{{p.title | characters:25}}</span>
+                <small class="right alert" ng-show="$index !== 0" style="margin-top: 12px;" ng-click="deleteBlog(p._id)"><i class="fa fa-trash-o"></i></small>
+              </a>
+            </h3>
+          </li>
+        </ul>
       </div>
 
     </div>

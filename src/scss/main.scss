@@ -42,3 +42,9 @@ $long: "top", "bottom", "left", "right";
     font-size: rem-calc(10px);
   }
 }
+.primary {color:$primary-color;}
+.secondary {color:$secondary-color;}
+.alert {color:$alert-color;}
+.success {color:$success-color;}
+.warning {color:$warning-color;}
+.info {color:$info-color;}

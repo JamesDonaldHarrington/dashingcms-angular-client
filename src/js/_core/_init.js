@@ -1,4 +1,11 @@
-var app = angular.module('dashing', ['ngRoute', 'LocalStorageModule', 'mm.foundation', 'hc.marked'] );
+var deps = [
+  'ngRoute',
+  'LocalStorageModule',
+  'mm.foundation',
+  'hc.marked',
+  'truncate'
+];
+var app = angular.module('dashing', deps);
 
 
 app.config(['markedProvider', function(markedProvider) {

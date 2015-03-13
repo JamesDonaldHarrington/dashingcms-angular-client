@@ -19,22 +19,26 @@ app.config(function($routeProvider, $locationProvider) {
   })
 
 
-/////////////////////////////////////////////////////////////MODULES////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////DASHBOARD//////////////////////////////////////////////////
   .when('/dashing/dashboard', {
     templateUrl: '/tpl/dashing/dashboard.html',
     controller: 'dashboardCtrl',
     title:'Dashing Dashboard'
   })
+
+/////////////////////////////////////////////////////////////BLOG///////////////////////////////////////////////////////
   .when('/dashing/blog', {
     templateUrl: '/tpl/dashing/blog/blog.html',
     controller: 'blogCtrl',
     title:'Dashing blog'
-  })
-  .when('/dashing/blog/edit/:slug', {
-    templateUrl: '/tpl/dashing/blog/post.html',
-    controller: 'blogCtrl',
-    title:'Dashing blog'
   });
+  // .when('/dashing/blog/edit/:slug', {
+  //   templateUrl: '/tpl/dashing/blog/post.html',
+  //   controller: 'blogCtrl',
+  //   title:'Dashing blog'
+  // })
+
+
 
   $routeProvider.otherwise({redirectTo: '/'});
 

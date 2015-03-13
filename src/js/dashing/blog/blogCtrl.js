@@ -1,34 +1,56 @@
-app.controller('blogCtrl', function($scope, $modal, $http){
-  $scope.post = {status:'pending'};
+app.controller('blogCtrl', function($scope, $modal, $http, ubAlert){
+  
 
   $http.get('/api/cms/posts')
   .success(function(d){
     if (d.success) {
       $scope.posts = d.results;
+      $scope.posts.unshift({status:'hidden'});
+      $scope.selectedPost = $scope.posts[0];
     }
   });
 
 
   $scope.createPost = function(){
-
     if ($scope.postForm.$valid) {
-      $http.post('/api/cms/posts', $scope.post)
+      $http.post('/api/cms/posts', $scope.posts[0])
       .success(function(d){
         if (d.success) {
-          $scope.posts.push(d.results);
-          $scope.post = {status:'pending'};
+          $scope.posts.shift();
+          $scope.posts.unshift(d.results);
+          $scope.posts.unshift({status:'pending'});
           $scope.postForm.$submitted = false;
+          $scope.selectedPost = $scope.posts[0];
+          ubAlert({message:'Post added successfully', type:'win'});
         }
       });
     }
+  };
 
+  $scope.selectPost = function(_id){
+    if (!_id) 
+      { $scope.selectedPost = $scope.posts[0]; }
+    else
+      { $scope.selectedPost = $scope.posts[$scope.posts.map(function(e) {return e._id;}).indexOf(_id)]; }
+  };
+
+  $scope.deleteBlog = function(_id){
+    if(_id){
+      $http.delete('/api/cms/posts/'+_id )
+      .success(function(d){
+        if (d.success) {
+          var ind = $scope.posts.map(function(e) { return e._id;}).indexOf(_id);
+          $scope.posts.splice(ind, 1);
+        }
+      });
+    }
   };
 
   $scope.openPreview = function(){
-    var modalInstance = $modal.open({
+    $modal.open({
       templateUrl: 'modalPreview.html',
       controller: function ($scope, md) {$scope.md = md; },
-      resolve: {md: function () {return $scope.post.body; } }
+      resolve: {md: function () {return $scope.posts[0].body; } }
     });
   };
 
