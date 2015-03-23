@@ -13,17 +13,28 @@ app.controller('blogCtrl', function($scope, $modal, $http, ubAlert){
 
   $scope.createPost = function(){
     if ($scope.postForm.$valid) {
-      $http.post('/api/cms/posts', $scope.posts[0])
-      .success(function(d){
-        if (d.success) {
-          $scope.posts.shift();
-          $scope.posts.unshift(d.results);
-          $scope.posts.unshift({status:'pending'});
-          $scope.postForm.$submitted = false;
-          $scope.selectedPost = $scope.posts[0];
-          ubAlert({message:'Post added successfully', type:'win'});
-        }
-      });
+      console.log($scope.selectedPost);
+      if ($scope.selectedPost._id) {
+        $http.put('/api/cms/posts', $scope.selectedPost)
+        .success(function(d){
+          if (d.success) {
+            $scope.postForm.$submitted = false;
+            ubAlert({message:'Post updated successfully', type:'win'});
+          }
+        });
+      }else{
+        $http.post('/api/cms/posts', $scope.posts[0])
+        .success(function(d){
+          if (d.success) {
+            $scope.posts.shift();
+            $scope.posts.unshift(d.results);
+            $scope.posts.unshift({status:'pending'});
+            $scope.postForm.$submitted = false;
+            $scope.selectedPost = $scope.posts[0];
+            ubAlert({message:'Post added successfully', type:'win'});
+          }
+        });
+      }
     }
   };
 
@@ -50,7 +61,7 @@ app.controller('blogCtrl', function($scope, $modal, $http, ubAlert){
     $modal.open({
       templateUrl: 'modalPreview.html',
       controller: function ($scope, md) {$scope.md = md; },
-      resolve: {md: function () {return $scope.posts[0].body; } }
+      resolve: {md: function () {return $scope.selectedPost.body; } }
     });
   };
 

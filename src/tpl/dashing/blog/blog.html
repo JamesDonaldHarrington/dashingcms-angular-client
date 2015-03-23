@@ -19,7 +19,7 @@
             <div class="row">
               <div class="large-6 columns">
                 <label>Slug (url)
-                  <input type="text" name="slug" placeholder="dashingly-handsom-blog-post" ng-class="{error:postForm.slug.$invalid && postForm.$submitted}" ng-model="selectedPost.slug" ng-pattern="/^[a-z0-9-]+$/" ng-trim="false"/>
+                  <input type="text" name="slug" placeholder="dashingly-handsom-blog-post" ng-class="{error:postForm.slug.$invalid && postForm.$submitted}" ng-model="selectedPost.slug" ng-pattern="/^[A-Za-z0-9-]+$/" ng-trim="false"/>
                 </label>
                 <small class="error" ng-show="postForm.slug.$invalid && postForm.$submitted">This is not a valid slug (url)</small>
               </div>
@@ -78,6 +78,7 @@
 
       <div class="large-6 column left">
         <ul class="side-nav">
+          <li ng-show="selectedPost._id && !posts[0].title"><h3><a ng-click="selectedPost = posts[0]">New Post</a></h3><hr></li>
           <li ng-repeat="p in posts" ng-show="p.title">
             
             <h3>
@@ -87,6 +88,7 @@
                 <small class="right alert" ng-show="$index !== 0" style="margin-top: 12px;" ng-click="deleteBlog(p._id)"><i class="fa fa-trash-o"></i></small>
               </a>
             </h3>
+            <hr ng-show="$index === 0">
           </li>
         </ul>
       </div>
