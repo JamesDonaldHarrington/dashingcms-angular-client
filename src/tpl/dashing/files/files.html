@@ -1,0 +1,73 @@
+<div class="row files">
+  <div class="large-12 column">
+    <h1>Files</h1>
+    
+    <div class="row">
+      <form name="fileForm" ng-submit="uploadFile(newFile)" novalidate>
+        
+        <div class="large-1 column">
+          <label>File:</label>
+          <label for="file">
+            <div class="button tiny text-center" popover-html-unsafe="<img src='data:image/png;base64,{{newFile.file.base64}}'>" popover-placement="right" popover-animation="false"><i class="fa fa-image"></i></div>
+          </label>
+            <input type="file" id="file" name="file" class="hide" ng-model="newFile.file" ng-class="{error:fileForm.file.$invalid && fileForm.$submitted}" base-sixty-four-input required >
+          
+          <small class="error" ng-show="fileForm.file.$invalid && fileForm.$submitted">Please provide a file</small>
+        </div>
+
+        <div class="large-3 column">
+          <label>Title:
+            <input type="text" name="title" ng-model="newFile.title" ng-class="{error:fileForm.title.$invalid && fileForm.$submitted}" placeholder="dashingly hadnsom file" required>
+          </label>
+          <small class="error" ng-show="fileForm.title.$invalid && fileForm.$submitted">Please provide a title</small>
+        </div>
+        <div class="large-3 column">
+          
+          <label>Category:
+            <input type="text" placeholder="Art, Cars, Food, Fitness" name="category" ng-class="{error:fileForm.category.$invalid && fileForm.$submitted}" ng-model="newFile.category" ng-list />
+          </label>
+           
+          <div class="row">
+            <div class="large-12 column">
+              <span class="label mr5 secondary" ng-repeat="cat in newFile.category track by $index">{{cat}}</span>
+            </div>
+          </div>
+        
+        </div>
+        <div class="large-3 column">
+          <label>Note:
+            <input type="text" placeholder="... " name="note" ng-class="{error:fileForm.note.$invalid && fileForm.$submitted}" ng-model="newFile.note" />
+          </label>
+        </div>
+        <div class="large-2 column">
+          <button class="button tiny expand inline mb0 mt20">Save File</button>
+        </div>
+      </form>
+    </div>
+    <hr>
+
+    <div class="row" ng-repeat="file in files" ng-click="selectFile(file._id)">
+      <div class="large-1 column">
+        <div class="button tiny text-center showImage" >
+          <i class="fa fa-image"></i>
+          <span class="fileImage"> <img src='http://localhost:3030{{file.path}}'></span>
+        </div>
+      </div>
+      <div class="large-3 column">
+        {{file.title}}
+      </div>
+      <div class="large-3 column">
+        <span class="label mr5 secondary" ng-repeat="cat in file.category track by $index">{{cat}}</span>
+      </div>
+      <div class="large-3 column">
+        {{file.note}}
+      </div>
+      <div class="large-2 column">
+        <button class="button alert tiny right" ng-click="deleteFile(file._id)">
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

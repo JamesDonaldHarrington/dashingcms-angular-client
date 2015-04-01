@@ -1,0 +1,20 @@
+.showImage:hover .fileImage{
+  display: block;
+}
+.fileImage{
+  position: absolute;
+  top: 0;
+  left: 82px;
+  width: 230px;
+  z-index: 10;
+  display: none;
+  box-shadow: $layer1;
+  @include panel(
+    // Sets the panel background color. Default: $panel-pg
+    $bg:$smoke,
+    // Sets the panel padding amount. Default: $panel-padding
+    $padding:10px
+  );
+  @include radius()
+}
+
