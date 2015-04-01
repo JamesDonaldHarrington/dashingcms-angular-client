@@ -3,6 +3,11 @@
 @import 'foundation_custom';
 @import 'mixins';
 
+
+$layer1 :2px 2px 3px $gainsboro;
+
+
+
 $short: "t", "b", "l", "r";
 $long: "top", "bottom", "left", "right";
 
@@ -48,3 +53,14 @@ $long: "top", "bottom", "left", "right";
 .success {color:$success-color;}
 .warning {color:$warning-color;}
 .info {color:$info-color;}
+.tooltip{min-width: 100px;}
+
+
+
+
+
+
+
+.files{
+  @import 'files';
+}

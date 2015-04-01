@@ -3,7 +3,8 @@ var deps = [
   'LocalStorageModule',
   'mm.foundation',
   'hc.marked',
-  'truncate'
+  'truncate',
+  'naif.base64'
 ];
 var app = angular.module('dashing', deps);
 

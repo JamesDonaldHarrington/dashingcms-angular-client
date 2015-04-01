@@ -31,13 +31,24 @@ app.config(function($routeProvider, $locationProvider) {
     templateUrl: '/tpl/dashing/blog/blog.html',
     controller: 'blogCtrl',
     title:'Dashing blog'
-  });
+  })
   // .when('/dashing/blog/edit/:slug', {
   //   templateUrl: '/tpl/dashing/blog/post.html',
   //   controller: 'blogCtrl',
   //   title:'Dashing blog'
   // })
 
+/////////////////////////////////////////////////////////////FILES//////////////////////////////////////////////////////
+  .when('/dashing/files', {
+    templateUrl: '/tpl/dashing/files/files.html',
+    controller: 'filesCtrl',
+    title:'Dashing files'
+  });
+  // .when('/dashing/blog/edit/:slug', {
+  //   templateUrl: '/tpl/dashing/blog/post.html',
+  //   controller: 'blogCtrl',
+  //   title:'Dashing blog'
+  // })
 
 
   $routeProvider.otherwise({redirectTo: '/'});

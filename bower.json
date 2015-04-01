@@ -18,7 +18,8 @@
     "foundation": "~5.5.0",
     "angular-local-storage": "~0.1.5",
     "angular-marked": "~0.0.12",
-    "angular-truncate": "*"
+    "angular-truncate": "*",
+    "angular-base64-upload": "~0.0.5"
   },
   "ignore": [
     "**/.*",
