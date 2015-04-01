@@ -32,23 +32,21 @@ app.config(function($routeProvider, $locationProvider) {
     controller: 'blogCtrl',
     title:'Dashing blog'
   })
-  // .when('/dashing/blog/edit/:slug', {
-  //   templateUrl: '/tpl/dashing/blog/post.html',
-  //   controller: 'blogCtrl',
-  //   title:'Dashing blog'
-  // })
 
 /////////////////////////////////////////////////////////////FILES//////////////////////////////////////////////////////
   .when('/dashing/files', {
     templateUrl: '/tpl/dashing/files/files.html',
     controller: 'filesCtrl',
     title:'Dashing files'
+  })
+
+/////////////////////////////////////////////////////////////FILES//////////////////////////////////////////////////////
+  .when('/dashing/galleries', {
+    templateUrl: '/tpl/dashing/galleries/galleries.html',
+    controller: 'galleriesCtrl',
+    title:'Dashing galleries'
   });
-  // .when('/dashing/blog/edit/:slug', {
-  //   templateUrl: '/tpl/dashing/blog/post.html',
-  //   controller: 'blogCtrl',
-  //   title:'Dashing blog'
-  // })
+
 
 
   $routeProvider.otherwise({redirectTo: '/'});

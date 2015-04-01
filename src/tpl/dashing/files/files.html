@@ -8,7 +8,10 @@
         <div class="large-1 column">
           <label>File:</label>
           <label for="file">
-            <div class="button tiny text-center" popover-html-unsafe="<img src='data:image/png;base64,{{newFile.file.base64}}'>" popover-placement="right" popover-animation="false"><i class="fa fa-image"></i></div>
+            <div class="button tiny text-center showImage">
+              <i class="fa fa-image"></i>
+              <span class="fileImage" ng-show="newFile.file"> <img src='data:image/png;base64,{{newFile.file.base64}}'></span>
+            </div>
           </label>
             <input type="file" id="file" name="file" class="hide" ng-model="newFile.file" ng-class="{error:fileForm.file.$invalid && fileForm.$submitted}" base-sixty-four-input required >
           
