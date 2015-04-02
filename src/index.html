@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title ng-bind="title">Dashing CMS</title>
+  <title ng-bind="title || 'Dashing CMS'"></title>
   <base href="/test">
   <meta name="description" content="Send Secreate message with My Wingman App">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,13 @@
   
   <!-- <div ng-hide="loggedin" class="public nav" ng-include="'/tpl/public/partials/nav.html'" ></div> -->
   <div ng-show="loggedin" class="loggedin nav" ng-include="'/tpl/dashing/partials/nav.html'" ></div>
-  
+  <div class="pageTitle">
+    <div class="row ">
+      <div class="large-12 column">
+        <h1>{{title}}</h1>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="column large-12">
       <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" >{{alert.message}}</alert>

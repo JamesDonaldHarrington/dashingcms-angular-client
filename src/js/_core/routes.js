@@ -23,28 +23,40 @@ app.config(function($routeProvider, $locationProvider) {
   .when('/dashing/dashboard', {
     templateUrl: '/tpl/dashing/dashboard.html',
     controller: 'dashboardCtrl',
-    title:'Dashing Dashboard'
+    title:'Dashboard'
   })
 
 /////////////////////////////////////////////////////////////BLOG///////////////////////////////////////////////////////
   .when('/dashing/blog', {
     templateUrl: '/tpl/dashing/blog/blog.html',
     controller: 'blogCtrl',
-    title:'Dashing blog'
+    title:'Blog'
   })
 
 /////////////////////////////////////////////////////////////FILES//////////////////////////////////////////////////////
   .when('/dashing/files', {
     templateUrl: '/tpl/dashing/files/files.html',
     controller: 'filesCtrl',
-    title:'Dashing files'
+    title:'Files'
   })
 
-/////////////////////////////////////////////////////////////FILES//////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////GALLERIES//////////////////////////////////////////////////
   .when('/dashing/galleries', {
     templateUrl: '/tpl/dashing/galleries/galleries.html',
     controller: 'galleriesCtrl',
-    title:'Dashing galleries'
+    title:'Galleries'
+  })
+  .when('/dashing/galleries/create', {
+    templateUrl: '/tpl/dashing/galleries/create.html',
+    controller: 'createGalleriesCtrl',
+    title:'Create Gallery',
+    context:'create'
+  })
+  .when('/dashing/galleries/update/:id', {
+    templateUrl: '/tpl/dashing/galleries/create.html',
+    controller: 'createGalleriesCtrl',
+    title:'Update Gallery',
+    context:'update'
   });
 
 

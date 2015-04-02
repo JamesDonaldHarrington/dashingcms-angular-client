@@ -1,10 +1,16 @@
 <div class="row galleries">
   <div class="large-12 column">
     <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 text-center">
-      <li>
-        <img src="http://placehold.it/200/EEEEEE/333333&text=Add Gallery" alt="">
+      <li class="radius">
+        <a href="/dashing/galleries/create">
+          <img src="http://placehold.it/230/EEEEEE/333333&text=Add Gallery" alt="">
+        </a>
       </li>
-      <li ng-repeat="gallery in galleries">{{gallery.title}}</li>
+      <li ng-repeat="gallery in galleries">
+        <a href="/dashing/galleries/update/{{gallery._id}}">
+          <img src="http://placehold.it/230/EEEEEE/333333&text={{gallery.title}}" alt="">
+        </a>
+      </li>
     </ul>
   </div>
 </div>

@@ -13,16 +13,17 @@ app.config(['markedProvider', function(markedProvider) {
   markedProvider.setOptions({gfm: true});
 }]);
 
-app.run(function($rootScope, thisUser){
-  $rootScope.$on("$routeChangeStart", function(){
-    var user = thisUser();
+app.run(function($rootScope, User, $route){
+  $rootScope.$on("$routeChangeStart", function(event, current, previous){
+    $rootScope.title = current.$$route.title;
+    var user = User.get();
     $rootScope.loggedin = user?true:false;
   });
 });
 
 
-app.run(function(thisUser, $http){
-  var user = thisUser();
+app.run(function(User, $http){
+  var user = User.get();
   if (user) {
     $http.defaults.headers.common.token = user.token;
     $http.defaults.headers.common.id = user._id;
