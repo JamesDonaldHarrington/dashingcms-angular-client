@@ -13,11 +13,12 @@ app.config(['markedProvider', function(markedProvider) {
   markedProvider.setOptions({gfm: true});
 }]);
 
-app.run(function($rootScope, User, $route){
+app.run(function($rootScope, User, $route, ubAlertReset){
   $rootScope.$on("$routeChangeStart", function(event, current, previous){
     $rootScope.title = current.$$route.title;
     var user = User.get();
     $rootScope.loggedin = user?true:false;
+    ubAlertReset();
   });
 });
 

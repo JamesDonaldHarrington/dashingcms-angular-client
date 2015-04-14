@@ -47,6 +47,10 @@ $long: "top", "bottom", "left", "right";
     font-size: rem-calc(10px);
   }
 }
+.column.no-gutter {
+  padding-left: 0;
+  padding-right: 0;
+}
 .primary {color:$primary-color;}
 .secondary {color:$secondary-color;}
 .alert {color:$alert-color;}
@@ -62,7 +66,12 @@ $long: "top", "bottom", "left", "right";
     color:$white;
   }
 }
-
+table tr.selected{
+  background: $primary-color;
+  td{
+    color: $white;
+  }
+}
 
 
 

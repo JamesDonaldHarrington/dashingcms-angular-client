@@ -12,7 +12,6 @@ app.controller('filesCtrl', function($scope, $modal, $http, ubAlert){
     if ($scope.fileForm.$valid) {
       $http.post('/api/cms/files', $scope.newFile)
       .success(function(d){
-        console.log(d);
         if (d.success) {
           $scope.files.unshift(d.results);
         }
@@ -34,7 +33,6 @@ app.controller('filesCtrl', function($scope, $modal, $http, ubAlert){
       { $scope.selectedFile = $scope.files[0]; }
     else
       { $scope.selectedFile = $scope.files[$scope.files.map(function(e) {return e._id;}).indexOf(_id)]; }
-  console.log($scope.selectedFile);
   };
 
 });

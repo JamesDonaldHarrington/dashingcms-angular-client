@@ -10,10 +10,8 @@ img, i{
   -ms-transition: opacity 0.25s ease-in-out;
   -o-transition: opacity 0.25s ease-in-out;
 }
-a {  
-  
-}
-[class*="block-grid"] a{
+
+[class*="block-grid"] div{
   color:$white;
   -webkit-transition: background 0.25s ease-in-out;
   -moz-transition: background 0.25s ease-in-out;
@@ -31,7 +29,7 @@ a {
     opacity: 0;
   }
 }
-li.selected a{
+li.selected div{
   background: $success-color;
   img{
     opacity: .7;

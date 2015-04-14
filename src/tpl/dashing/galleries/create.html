@@ -1,10 +1,10 @@
 <div class="row create galleries">
   <div class="large-12 column">
-    <form name="createForm" ng-submit="createGallery()">
+    <form name="createForm" ng-submit="createGallery()" novalidate>
 
       <div class="large-4 column">
         <label>Title:
-          <input type="text" name="title" ng-model="newGallery.title" ng-class="{error:createForm.title.$invalid && createForm.$submitted}" placeholder="Gallery of Dashing People" required>
+          <input type="text" name="title" ng-model="newGallery.title" ng-class="{error:createForm.title.$invalid && createForm.$submitted}" placeholder="Gallery of Dashing People" required >
         </label>
         <small class="error" ng-show="createForm.title.$invalid && createForm.$submitted">Please provide a title</small>
       </div>
@@ -41,18 +41,20 @@
         </div>
         <div class="large-12 column">
           <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 text-center">
-            <li ng-repeat="file in files" ng-class="{selected:file.isSelected}">
-              <a ng-click="file.isSelected = !file.isSelected">
-                <img src="http://localhost:3030{{file.path}}" alt="">
-                <i class="fa fa-check-circle-o fa-2x"></i>
-              </a>
+            <li ng-repeat="file in files" ng-class="{selected:isSelected(file._id)}">
+                <div ng-click="clickFile(file._id)">
+                  <img src="http://localhost:3030{{file.path}}" alt="">
+                  <i class="fa fa-check-circle-o fa-2x"></i>
+                </div>
             </li>
           </ul>
           <hr>
         </div>
         <div class="large-3 column end">
-          <button class="button tiny expand inline mb0 mt20" ng-if="context === 'create' ">Create Gallery</button>
-          <button class="button tiny expand inline mb0 mt20" ng-if="context === 'update' ">Update Gallery</button>
+          <button class="button tiny expand inline mb0 mt20">{{!update ? 'Create Gallery' : 'Update Gallery' }}</button>
+        </div>
+        <div class="column large-3">
+          <a class="button tiny expand inline mb0 mt20 alert" ng-if="update" ng-click="deleteGallery()" >Delete Gallery</a>
         </div>
       </div>
     </form>

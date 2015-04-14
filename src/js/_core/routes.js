@@ -28,7 +28,7 @@ app.config(function($routeProvider, $locationProvider) {
 
 /////////////////////////////////////////////////////////////BLOG///////////////////////////////////////////////////////
   .when('/dashing/blog', {
-    templateUrl: '/tpl/dashing/blog/blog.html',
+    templateUrl: '/tpl/dashing/blogs/blog.html',
     controller: 'blogCtrl',
     title:'Blog'
   })
@@ -57,8 +57,14 @@ app.config(function($routeProvider, $locationProvider) {
     controller: 'createGalleriesCtrl',
     title:'Update Gallery',
     context:'update'
-  });
+  })
 
+/////////////////////////////////////////////////////////////FILES//////////////////////////////////////////////////////
+  .when('/dashing/users', {
+    templateUrl: '/tpl/dashing/users/users.html',
+    controller: 'usersCtrl',
+    title:'Users'
+  });
 
 
   $routeProvider.otherwise({redirectTo: '/'});

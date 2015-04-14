@@ -1,0 +1,65 @@
+<div class="row users">
+  <div class="large-12 column">
+    <div class="row" ng-hide="makingUser">
+      <div class="large-3 column">
+        <a class="button" ng-click="makingUser = true;">New User</a>
+      </div>
+    </div>
+    <form name="newUserForm" ng-submit="createNewUser()" novalidate></form>
+    <div class="row" ng-show="makingUser">
+      <div class="large-3 column">
+        <label>First Name:
+          <input type="text" name="givenName" ng-model="newUser.givenName" required ng-class="{error:newUserForm.givenName.$invalid && newUserForm.$submitted}">
+        </label>
+        <small class="error" ng-show="newUserForm.givenName.$invalid && newUserForm.$submitted">Please provide a First Name</small>
+      </div>
+      <div class="large-3 column">
+        <label>Last Name:
+          <input type="text" name="familyName" ng-model="newUser.familyName">
+        </label>
+      </div>
+      <div class="large-3 column">
+        <label>Email:
+          <input type="email" name="email" ng-model="newUser.email" required>
+        </label>
+        <small class="error" ng-show="newUserForm.email.$invalid && newUserForm.$submitted">Please provide a valid Email</small>
+      </div>
+      <div class="large-3 column">
+        <label>Access:
+          <select name="access" ng-model="newUser.access" required> </select>
+        </label>
+        <small class="error" ng-show="newUserForm.access.$invalid && newUserForm.$submitted">Please an access level</small>
+        <small ></small>
+      </div>
+      <div class="large-3 column">
+        <ul class="button-group even-2">
+          <li><a class="button tiny mt20 pr30 pl30">Invite User</a></li>
+          <li><a class="button secondary tiny mt20" ng-click="makingUser = false;">Cancel</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 column">
+    	<table width="100%">
+        <thead>
+          <tr>
+            <th ng-click="predicate = 'name'; reverse=!reverse">Name</th>
+            <th ng-click="predicate = 'email'; reverse=!reverse">Email</th>
+            <th ng-click="predicate = 'accessibility'; reverse=!reverse">Access</th>
+            <th ng-click="predicate = 'created'; reverse=!reverse">Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users | orderBy:predicate:reverse"ng-click="selectUser(user._id)"ng-class="{'selected': selectedUser._id === user._id}" >
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.accessibility}}</td>
+            <td>{{user.created | date :  'mediumDate'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
