@@ -1,4 +1,4 @@
-app.controller('homeCtrl', function($scope, $http, $rootScope, $location, $modal, User) {
+app.controller('home.Ctrl', function($scope, $http, $rootScope, $location, $modal, User) {
   var user = User.get();
   $http.get('/api/start')
   .success(function(d){

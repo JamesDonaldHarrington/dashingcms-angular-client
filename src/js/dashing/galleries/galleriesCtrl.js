@@ -1,4 +1,4 @@
-app.controller('galleriesCtrl', function($scope, $modal, $http, ubAlert){
+app.controller('galleries.Ctrl', function($scope, $modal, $http, ubAlert){
   
 
   $http.get('/api/cms/galleries')

@@ -1,4 +1,4 @@
-app.controller('signup', function($scope, $http, $location, ubAlert, User) {
+app.controller('signup.Ctrl', function($scope, $http, $location, ubAlert, User) {
   
   $scope.signup = function(){
     if ($scope.signupForm.$valid) {

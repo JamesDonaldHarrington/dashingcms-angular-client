@@ -1,4 +1,4 @@
-app.controller('filesCtrl', function($scope, $modal, $http, ubAlert){
+app.controller('files.Ctrl', function($scope, $modal, $http, ubAlert){
   
 
   $http.get('/api/cms/files')

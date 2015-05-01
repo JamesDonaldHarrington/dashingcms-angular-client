@@ -1,4 +1,4 @@
-app.controller('createGalleriesCtrl', function($scope, $modal, $http, ubAlert, $route, $routeParams, $location){
+app.controller('create.Galleries.Ctrl', function($scope, $modal, $http, ubAlert, $route, $routeParams, $location){
   $scope.context = $routeParams.id? 'update':'create';
   var update = $scope.update = $scope.context == 'update';
   $scope.newGallery = {

@@ -1,43 +1,56 @@
+
 <div class="row users">
   <div class="large-12 column">
+    <div class="row">
+      <div class="large-4 right column">
+        <ul class="button-group even-2">
+          <li><a href="/dashing/users" class="button mb0">User</a></li>
+          <li><a href="/dashing/permissions" class="button mb0">Permissions</a></li>
+        </ul>
+      </div>
+      <div class="large-12 column">
+        <hr>
+      </div>
+    </div>
     <div class="row" ng-hide="makingUser">
       <div class="large-3 column">
         <a class="button" ng-click="makingUser = true;">New User</a>
       </div>
     </div>
-    <form name="newUserForm" ng-submit="createNewUser()" novalidate></form>
-    <div class="row" ng-show="makingUser">
-      <div class="large-3 column">
-        <label>First Name:
-          <input type="text" name="givenName" ng-model="newUser.givenName" required ng-class="{error:newUserForm.givenName.$invalid && newUserForm.$submitted}">
-        </label>
-        <small class="error" ng-show="newUserForm.givenName.$invalid && newUserForm.$submitted">Please provide a First Name</small>
+    <form name="newUserForm" ng-submit="createNewUser()" novalidate>
+      <div class="row" ng-show="makingUser">
+        <div class="large-3 column">
+          <label>First Name:
+            <input type="text" name="givenName" ng-model="newUser.givenName" required ng-class="{error:newUserForm.givenName.$invalid && newUserForm.$submitted}">
+          </label>
+          <small class="error" ng-show="newUserForm.givenName.$invalid && newUserForm.$submitted">Please provide a First Name</small>
+        </div>
+        <div class="large-3 column">
+          <label>Last Name:
+            <input type="text" name="familyName" ng-model="newUser.familyName">
+          </label>
+        </div>
+        <div class="large-3 column">
+          <label>Email:
+            <input type="email" name="email" ng-model="newUser.email" required ng-class="{error:newUserForm.email.$invalid && newUserForm.$submitted}">
+          </label>
+          <small class="error" ng-show="newUserForm.email.$invalid && newUserForm.$submitted">Please provide a valid Email</small>
+        </div>
+        <div class="large-3 column">
+          <label>Access:
+            <select name="access" ng-model="newUser.access" required ng-class="{error:newUserForm.access.$invalid && newUserForm.$submitted}" ng-options="r.title for r in rolls"> </select>
+          </label>
+          <small class="error" ng-show="newUserForm.access.$invalid && newUserForm.$submitted">Please choose an access level</small>
+          <small ></small>
+        </div>
+        <div class="large-3 column">
+          <ul class="button-group even-2">
+            <li><button class="button tiny mt20">Invite User</button></li>
+            <li><a class="button secondary tiny mt20" ng-click="makingUser = false;">Cancel</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="large-3 column">
-        <label>Last Name:
-          <input type="text" name="familyName" ng-model="newUser.familyName">
-        </label>
-      </div>
-      <div class="large-3 column">
-        <label>Email:
-          <input type="email" name="email" ng-model="newUser.email" required>
-        </label>
-        <small class="error" ng-show="newUserForm.email.$invalid && newUserForm.$submitted">Please provide a valid Email</small>
-      </div>
-      <div class="large-3 column">
-        <label>Access:
-          <select name="access" ng-model="newUser.access" required> </select>
-        </label>
-        <small class="error" ng-show="newUserForm.access.$invalid && newUserForm.$submitted">Please an access level</small>
-        <small ></small>
-      </div>
-      <div class="large-3 column">
-        <ul class="button-group even-2">
-          <li><a class="button tiny mt20 pr30 pl30">Invite User</a></li>
-          <li><a class="button secondary tiny mt20" ng-click="makingUser = false;">Cancel</a></li>
-        </ul>
-      </div>
-    </div>
+    </form>
 
     <div class="row">
       <div class="large-12 column">
@@ -61,5 +74,7 @@
       </table>
       </div>
     </div>
+
   </div>
 </div>
+ 

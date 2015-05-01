@@ -1,4 +1,4 @@
-app.controller('usersCtrl', function($scope, $modal, $http, ubAlert){
+app.controller('users.Ctrl', function($scope, $modal, $http, ubAlert){
 
   $http.get('/api/cms/users')
   .success(function(d){
@@ -6,10 +6,17 @@ app.controller('usersCtrl', function($scope, $modal, $http, ubAlert){
       $scope.users = d.results;
     }
   });
+  $http.get('/api/cms/rolls')
+  .success(function(d){
+    console.log(d);
+    $scope.rolls = d.results;
+  });
 
 
   $scope.createNewUser = function(){
+    console.log($scope);
     if ($scope.newUserForm.$valid) {
+      console.log('valid');
       $http.post('/api/cms/users', $scope.newUser)
       .success(function(d){
         $scope.users.unshift(d.results);

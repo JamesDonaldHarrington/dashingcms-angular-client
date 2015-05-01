@@ -4,17 +4,17 @@ app.config(function($routeProvider, $locationProvider) {
 /////////////////////////////////////////////////////////////STARTUP AND LOGIN / SIGNUP ////////////////////////////////
   .when('/', {
     templateUrl: '/tpl/public/home.html',
-    controller: 'homeCtrl',
+    controller: 'home.Ctrl',
     title:'Home'
   })
   .when('/login', {
     templateUrl: '/tpl/public/login.html',
-    controller: 'loginCtrl',
+    controller: 'login.Ctrl',
     title:'Login'
   })
   .when('/start', {
     templateUrl: '/tpl/public/start.html',
-    controller: 'startCtrl',
+    controller: 'start.Ctrl',
     title:'start'
   })
 
@@ -22,48 +22,53 @@ app.config(function($routeProvider, $locationProvider) {
 /////////////////////////////////////////////////////////////DASHBOARD//////////////////////////////////////////////////
   .when('/dashing/dashboard', {
     templateUrl: '/tpl/dashing/dashboard.html',
-    controller: 'dashboardCtrl',
+    controller: 'dashboard.Ctrl',
     title:'Dashboard'
   })
 
 /////////////////////////////////////////////////////////////BLOG///////////////////////////////////////////////////////
   .when('/dashing/blog', {
     templateUrl: '/tpl/dashing/blogs/blog.html',
-    controller: 'blogCtrl',
+    controller: 'blog.Ctrl',
     title:'Blog'
   })
 
 /////////////////////////////////////////////////////////////FILES//////////////////////////////////////////////////////
   .when('/dashing/files', {
     templateUrl: '/tpl/dashing/files/files.html',
-    controller: 'filesCtrl',
+    controller: 'files.Ctrl',
     title:'Files'
   })
 
 /////////////////////////////////////////////////////////////GALLERIES//////////////////////////////////////////////////
   .when('/dashing/galleries', {
     templateUrl: '/tpl/dashing/galleries/galleries.html',
-    controller: 'galleriesCtrl',
+    controller: 'galleries.Ctrl',
     title:'Galleries'
   })
   .when('/dashing/galleries/create', {
     templateUrl: '/tpl/dashing/galleries/create.html',
-    controller: 'createGalleriesCtrl',
+    controller: 'create.Galleries.Ctrl',
     title:'Create Gallery',
     context:'create'
   })
   .when('/dashing/galleries/update/:id', {
     templateUrl: '/tpl/dashing/galleries/create.html',
-    controller: 'createGalleriesCtrl',
+    controller: 'create.Galleries.Ctrl',
     title:'Update Gallery',
     context:'update'
   })
 
-/////////////////////////////////////////////////////////////FILES//////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////USERS//////////////////////////////////////////////////////
   .when('/dashing/users', {
     templateUrl: '/tpl/dashing/users/users.html',
-    controller: 'usersCtrl',
+    controller: 'users.Ctrl',
     title:'Users'
+  })
+  .when('/dashing/permissions', {
+    templateUrl: '/tpl/dashing/users/permissions.html',
+    controller: 'users.permissions.Ctrl',
+    title:'Permissions'
   });
 
 

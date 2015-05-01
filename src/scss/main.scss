@@ -72,10 +72,25 @@ table tr.selected{
     color: $white;
   }
 }
+.checkbox {
+  label {display: inline;}
+  input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:0 5px 0 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -5px;
+    overflow: hidden;
+  }
+}
 
 
-
-
+.tabs dd.active a{
+  background:$primary-color;
+  color: white
+}
 
 .files{
   @import 'files';

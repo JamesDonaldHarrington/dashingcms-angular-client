@@ -1,4 +1,4 @@
-app.controller('blogCtrl', function($scope, $modal, $http, ubAlert){
+app.controller('blog.Ctrl', function($scope, $modal, $http, ubAlert){
   
 
   $http.get('/api/cms/posts')

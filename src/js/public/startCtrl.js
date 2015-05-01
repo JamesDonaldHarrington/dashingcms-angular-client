@@ -1,4 +1,4 @@
-app.controller('startCtrl', function($scope, $http, $timeout, $location, ubAlert, User) {
+app.controller('start.Ctrl', function($scope, $http, $timeout, $location, ubAlert, User) {
   
   $scope.start = function(){
     if ($scope.startForm.$valid) {

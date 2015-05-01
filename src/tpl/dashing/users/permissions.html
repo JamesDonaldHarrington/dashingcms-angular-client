@@ -1,0 +1,69 @@
+<div class="row users permissions">
+  <div class="large-12 column">
+    
+    <div class="row">
+      <div class="large-4 right column">
+        <ul class="button-group even-2">
+          <li><a href="/dashing/users" class="button mb0">User</a></li>
+          <li><a href="/dashing/permissions" class="button mb0">Permissions</a></li>
+        </ul>
+      </div>
+      <div class="large-12 column">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-4 small-6 column">
+        <select name="rolls" ng-options="r.title for r in rolls" ng-model="editRoll">
+          <option value="">-- Choose Roll --</option>
+        </select>
+      </div>
+      <div class="large-4 small-6 column">
+        <a class="button tiny alert" ng-show="editRoll"ng-click="destroyRoll()"><i class="fa fa-times"></i> Delete Roll</a>
+      </div>
+      <div class="large-4 column">
+        <a class="button expand small" ng-click="openModal()">Create New Roll</a>
+      </div>
+    </div>
+    <div class="row" ng-hide="!editRoll.title">
+      <div class="large-3 column" ng-repeat="(key, acc) in access">
+        <div >
+          <div><h3>{{key | ubTitleCase}}</h3></div>
+          
+          <div class="ml5">
+            <div ng-repeat="crud in access[key]" class="checkbox">
+              <label>
+                <input type="checkbox" name="{{key}}-{{crud}}" id="" checklist-model="editRoll.access" checklist-value="key+'.'+crud" ng-click="updateRoll()">{{crud}}
+              </label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 column">
+        <pre>{{editRoll || undefined | json}}</pre>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<script type="text/ng-template" id="modal.html">
+  <h3>Im a modal!</h3>
+  
+  <form name="newRollForm" ng-submit="newRoll()" novalidate>
+    <label>Roll:
+      <input type="text" name="roll" ng-model="roll.title" required ng-class="{error:newRollForm.$submitted && newRollForm.roll.$invalid}" >
+    </label>
+    <small class="error" ng-show="newRollForm.$submitted && newRollForm.roll.$invalid">Please provide a new roll</small>
+    <button class="button" ng-click="newRollForm.roll.$valid && ok(roll)">OK</button>
+  </form>
+  
+  <a class="close-reveal-modal" ng-click="cancel()">&#215;</a>
+</script>

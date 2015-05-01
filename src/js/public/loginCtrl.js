@@ -1,4 +1,4 @@
-app.controller('loginCtrl', function($scope, $http, $rootScope, $location, $modal, ubAlert, User) {
+app.controller('login.Ctrl', function($scope, $http, $rootScope, $location, $modal, ubAlert, User) {
   
   $scope.login = function(){
     if ($scope.loginForm.$valid) {
