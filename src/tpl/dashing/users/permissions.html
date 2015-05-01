@@ -27,20 +27,21 @@
       </div>
     </div>
     <div class="row" ng-hide="!editRoll.title">
-      <div class="large-3 column" ng-repeat="(key, acc) in access">
-        <div >
-          <div><h3>{{key | ubTitleCase}}</h3></div>
-          
-          <div class="ml5">
-            <div ng-repeat="crud in access[key]" class="checkbox">
-              <label>
-                <input type="checkbox" name="{{key}}-{{crud}}" id="" checklist-model="editRoll.access" checklist-value="key+'.'+crud" ng-click="updateRoll()">{{crud}}
-              </label>
+      <ul class="small-block-grid-5">
+        <li ng-repeat="(key, acc) in access">
+          <div>
+            <div><h3>{{key | ubTitleCase}}</h3></div>
+
+            <div class="ml5">
+              <div ng-repeat="crud in access[key]" class="checkbox">
+                <label>
+                  <input type="checkbox" name="{{key}}-{{crud}}" id="" checklist-model="editRoll.access" checklist-value="key+'.'+crud" ng-click="updateRoll()">{{crud}}
+                </label>
+              </div>
             </div>
           </div>
-
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
     <div class="row">
       <div class="large-12 column">
